@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1010312033470",
+    "firebase_url": "https://m3-arbeitszeitenef.firebaseio.com",
+    "project_id": "m3-arbeitszeitenef",
+    "storage_bucket": "m3-arbeitszeitenef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010312033470:android:c7948f77101832b326daef",
+        "android_client_info": {
+          "package_name": "com.nt28.modulo3_zeiterfassung"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1010312033470-ateseb6jpis6ajqcs2odf06aen1c8ejj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nt28.modulo3_zeiterfassung",
+            "certificate_hash": "182efa87de9b6481d414ad94ad1b66930e4966da"
+          }
+        },
+        {
+          "client_id": "1010312033470-f60mn42q1bejtf35104nng7s7bkf5rv3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwlhrbdUmNOduXC_cGka3QE9qwG5zWfqM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1010312033470-f60mn42q1bejtf35104nng7s7bkf5rv3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
