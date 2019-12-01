@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1010312033470-sq8bndebru5qpu34i6h3dcj2slecap86.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nt28.modulo3_zeiterfassung",
+            "certificate_hash": "5920cdfc18b09d43aa91cf55c96ac20d36be030f"
+          }
+        },
+        {
           "client_id": "1010312033470-ateseb6jpis6ajqcs2odf06aen1c8ejj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
