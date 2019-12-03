@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <!--    xmlns:tools="http://schemas.android.com/tools"-->
 
     <TextView
         android:id="@+id/text_home"
@@ -22,6 +22,7 @@
         android:id="@+id/background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/contentDescription"
         android:scaleType="centerCrop"
         android:src="@drawable/app_main_wp_grey"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,29 +32,29 @@
         app:layout_constraintVertical_bias="0.496" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:backgroundTint="#C61F1E1E"
         android:contentDescription="@android:string/yes"
-        android:text="Start"
+        android:text="@string/startText"
         android:textColor="#06AF0C"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/pauseButton"
         app:layout_constraintHorizontal_bias="0.782"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/pauseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:backgroundTint="#C61F1E1E"
         android:contentDescription="@android:string/ok"
-        android:text="Pause"
+        android:text="@string/pauseText"
         android:textColor="#FF5722"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,19 +63,19 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/endeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="#C61F1E1E"
         android:contentDescription="@android:string/yes"
-        android:text="Ende "
+        android:text="@string/endeText"
         android:textColor="#F8AA0000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.247"
-        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintStart_toEndOf="@+id/pauseButton"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <ImageView
@@ -82,6 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:contentDescription="@string/contentDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,7 +97,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/agencyfb"
-        android:text="Arbeitszeit"
+        android:text="@string/arbeitszeitText"
         android:textColor="#FAFFFFFF"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -109,7 +111,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="45dp"
         android:fontFamily="@font/agencyfb"
-        android:text="Pause"
+        android:text="@string/pauseText"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -117,13 +119,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/arbeitsZeitVerbleibend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="40dp"
         android:fontFamily="@font/agencyfb"
-        android:text="00:00:00"
+        android:text="@string/workZeit"
         android:textColor="#FAFFFFFF"
         android:textSize="45sp"
         android:textStyle="bold"
@@ -131,18 +133,18 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/pauseZeitVerbleibend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
         android:fontFamily="@font/agencyfb"
-        android:text="00:00:00"
+        android:text="@string/breakZeit"
         android:textColor="#FAFFFFFF"
         android:textSize="45sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/arbeitsZeitVerbleibend" />
 
     <TextView
         android:id="@+id/textView6"
@@ -150,7 +152,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="300dp"
         android:fontFamily="@font/hanzel_extended_normal"
-        android:text="modulo3"
+        android:text="@string/companyName"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#363535"
@@ -169,7 +171,7 @@
         android:layout_marginStart="42dp"
         android:layout_marginTop="1dp"
         android:fontFamily="@font/agencyfb"
-        android:text="verbleibend"
+        android:text="@string/verbleibendText"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -183,7 +185,7 @@
         android:layout_marginStart="42dp"
         android:layout_marginTop="1dp"
         android:fontFamily="@font/agencyfb"
-        android:text="verbleibend"
+        android:text="@string/verbleibendText"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
