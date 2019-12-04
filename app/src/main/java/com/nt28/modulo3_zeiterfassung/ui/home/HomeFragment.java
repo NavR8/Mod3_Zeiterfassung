@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.nt28.modulo3_zeiterfassung.R;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class HomeFragment extends Fragment {
 
@@ -140,7 +141,8 @@ public class HomeFragment extends Fragment {
 //    }
 
     //from coding with flow:
-    private static final long START_TIME_IN_MILLIS = 480000; // 28800000 millisec = 8 hrs
+    private static final long START_TIME_IN_MILLIS = 28800000; // 480000; 28800000 millisec != 8 hrs (60/60/60) >> 1min = 60.000 Millisec, 6 sec = 6.000 millisec!!
+    private static final long BREAK_TIME = 216000;
     private TextView mTextViewCountDown;
     private Button mButtonStart;
     private Button mButtonPause;
@@ -148,6 +150,7 @@ public class HomeFragment extends Fragment {
     private CountDownTimer mCountDownTimer;
     private boolean mTimerRunning;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
+    private long mBreakTimeLeft = BREAK_TIME;
 
 
 
@@ -169,25 +172,29 @@ public class HomeFragment extends Fragment {
         mButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startTimer();
+                startWorkTimer();
             }
         });
         mButtonPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pauseTimer();
+                if (mTimerRunning){
+                    pauseWorkTimer();
+                }else{
+                    startWorkTimer();
+                }
             }
         });
         mButtonEnde.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                endTimer();
+                endWorkTimer();
             }
         });
         return v;
     }
-
-        private void startTimer(){
+        //WorkTimer
+        private void startWorkTimer(){
         mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -204,31 +211,57 @@ public class HomeFragment extends Fragment {
             }
         }.start();
 
+//        //BreakTimer:
+//        mCountDownTimer = new CountDownTimer(mBreakTimeLeft, 1000) {
+//            @Override
+//            public void onTick(long millisUntilFinished) {
+//                mBreakTimeLeft = millisUntilFinished;
+//                updateCountDownText();
+//            }
+//
+//            @Override
+//            public void onFinish() {
+//                mTimerRunning = false;
+//            }
+//        }.start(); //BreakTimer code END
+
         mTimerRunning= true;
 //        mButtonStart.setText("pause");
 //        mButtonEnde.setVisibility(View.INVISIBLE);
     }
-    private void pauseTimer(){
+    private void pauseWorkTimer(){
         mCountDownTimer.cancel();
-        mTimerRunning =false;
+        mTimerRunning=false;
 //        mButtonStart.setText("Start");
 //        mButtonEnde.setVisibility(View.VISIBLE);
     }
-    private void endTimer(){
+    private void endWorkTimer(){
         mTimeLeftInMillis = START_TIME_IN_MILLIS;
+        mCountDownTimer.cancel();
         updateCountDownText();
 //        mButtonEnde.setVisibility(View.INVISIBLE);
 //        mButtonStart.setVisibility(View.VISIBLE);
     }
 
     private void updateCountDownText() {
-            int hours = (int) (mTimeLeftInMillis / 1000) / 60;
-            int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
-            int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+        //from coding with flow (hour is not working!):
+//            int hours = (int) (mTimeLeftInMillis / 1000) / 36000; // 480000; 28800000
+//            int minutes = (int) (mTimeLeftInMillis /1000) /60;
+//            int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+//
+//            String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d:%02d", hours, minutes, seconds);
+//
+//            mTextViewCountDown.setText(timeLeftFormatted);
+// End of Coding in flow code.
 
-            String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d:%02d", hours, minutes, seconds);
+            //stackoverflow:
+        int hours = (int) TimeUnit.MILLISECONDS.toHours(mTimeLeftInMillis);
+        int minutes = (int) ((int) TimeUnit.MILLISECONDS.toMinutes(mTimeLeftInMillis) % TimeUnit.HOURS.toMinutes(1));
+        int seconds = (int) ((int)TimeUnit.MILLISECONDS.toSeconds(mTimeLeftInMillis) % TimeUnit.MINUTES.toSeconds(1));
 
-            mTextViewCountDown.setText(timeLeftFormatted);
+        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d:%02d", hours, minutes, seconds);
+        mTextViewCountDown.setText(timeLeftFormatted);
+        //stackoverflow end
         }
   //End Coding flow
 //    }

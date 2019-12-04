@@ -38,20 +38,6 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-//    private static final long START_TIME_IN_MILLIS = 28800000; // = 8 hrs
-//
-//    private TextView mTextViewCountDown;
-//    private Button mButtonStart;
-//    private Button mButtonPause;
-//    private Button mButtonEnde;
-//
-//
-//
-//    private CountDownTimer mCountDownTimer;
-//    private boolean mTimerRunning;
-//    private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
-
-//    private static final String TAG = "MainActivity"; // https://firebase.google.com/docs/database/android/start >> LINK: MainActivity.java >> TO gitHub full code
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -116,90 +102,6 @@ public class MainActivity extends AppCompatActivity {
 //                counttime.setText("Finished");
 //            }
 //        };
-
-        //not coding in flow
-
-
-////coding with flow:
-//        // CHECK this: updateCountDownText by search to see connection to arbeitsZeitVerbleibend
-//        mTextViewCountDown=findViewById(R.id.arbeitsZeitVerbleibend);
-//        mButtonStart = findViewById(R.id.startButton);
-//        mButtonPause = findViewById(R.id.pauseButton);
-//        mButtonEnde = findViewById(R.id.endeButton);
-//
-//        mButtonStart.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-////
-////        mButtonStart.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                startTimer();
-////            }
-////        });
-////        mButtonPause.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                pauseTimer();
-////            }
-////        });
-////
-////        mButtonEnde.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                endTimer();
-////            }
-////        });
-////        updateCountDownText();
-////    }
-////
-//////Coding with flow:
-////    private void startTimer(){
-////        mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
-////            @Override
-////            public void onTick(long millisUntilFinished) {
-////                mTimeLeftInMillis = millisUntilFinished;
-////                updateCountDownText();
-////            }
-////
-////            @Override
-////            public void onFinish() {
-////                mTimerRunning = false;
-//////                mButtonStart.setText("Start");
-//////                mButtonStart.setVisibility(View.INVISIBLE);
-//////                mButtonEnde.setVisibility(View.VISIBLE);
-////            }
-////        }.start();
-////
-////        mTimerRunning= true;
-//////        mButtonStart.setText("pause");
-//////        mButtonEnde.setVisibility(View.INVISIBLE);
-////    }
-////    private void pauseTimer(){
-////        mCountDownTimer.cancel();
-////        mTimerRunning =false;
-//////        mButtonStart.setText("Start");
-//////        mButtonEnde.setVisibility(View.VISIBLE);
-////    }
-////    private void endTimer(){
-////        mTimeLeftInMillis = START_TIME_IN_MILLIS;
-////        updateCountDownText();
-//////        mButtonEnde.setVisibility(View.INVISIBLE);
-//////        mButtonStart.setVisibility(View.VISIBLE);
-////    }
-////
-////    private void updateCountDownText(){
-////        int hours=(int) (mTimeLeftInMillis /1000) /60;
-////        int minutes=(int) (mTimeLeftInMillis / 1000) /60;
-////        int seconds=(int) (mTimeLeftInMillis / 1000) %60;
-////
-////        String timeLeftFormatted =String.format(Locale.getDefault(),"%02d:%02d:%02d",hours,minutes, seconds);
-////
-////        mTextViewCountDown.setText(timeLeftFormatted);
-//////End of Coding with flow
 
     }
 

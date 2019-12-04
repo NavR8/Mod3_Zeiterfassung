@@ -22,7 +22,7 @@
     <ImageView
         android:id="@+id/background"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:contentDescription="@string/contentDescription"
         android:scaleType="centerCrop"
         android:src="@drawable/app_main_wp_grey"
@@ -40,9 +40,12 @@
         android:layout_marginEnd="10dp"
         android:backgroundTint="#C61F1E1E"
         android:contentDescription="@android:string/yes"
+        android:fontFamily="@font/agencyfb"
         android:text="@string/startText"
+        android:textAllCaps="true"
         android:textColor="#06AF0C"
-        android:textSize="20sp"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/pauseButton"
         app:layout_constraintHorizontal_bias="0.782"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,9 +58,12 @@
         android:layout_marginTop="20dp"
         android:backgroundTint="#C61F1E1E"
         android:contentDescription="@android:string/ok"
+        android:fontFamily="@font/agencyfb"
         android:text="@string/pauseText"
+        android:textAllCaps="true"
         android:textColor="#FF5722"
-        android:textSize="20sp"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,14 +77,16 @@
         android:layout_marginTop="20dp"
         android:backgroundTint="#C61F1E1E"
         android:contentDescription="@android:string/yes"
+        android:fontFamily="@font/agencyfb"
         android:text="@string/endeText"
-        android:textColor="#F8AA0000"
-        android:textSize="20sp"
+        android:textAllCaps="true"
+        android:textColor="#F8D60000"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.247"
         app:layout_constraintStart_toEndOf="@+id/pauseButton"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 <!--    android:visibility="invisible"-->
 <!--    tools:visibility="visible"-->
 
@@ -124,7 +132,7 @@
 
     <TextView
         android:id="@+id/arbeitsZeitVerbleibend"
-        android:layout_width="wrap_content"
+        android:layout_width="160sp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="40dp"
@@ -138,7 +146,7 @@
 
     <TextView
         android:id="@+id/pauseZeitVerbleibend"
-        android:layout_width="wrap_content"
+        android:layout_width="160sp"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
