@@ -90,6 +90,24 @@
 <!--    android:visibility="invisible"-->
 <!--    tools:visibility="visible"-->
 
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="312dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FF3A2E2E"
+        android:contentDescription="@android:string/yes"
+        android:fontFamily="@font/agencyfb"
+        android:text="@string/resetText"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pauseButton" />
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"

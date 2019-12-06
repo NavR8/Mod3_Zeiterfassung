@@ -27,8 +27,11 @@ public class HomeFragment extends Fragment {
     private Button mButtonStart;
     private Button mButtonPause;
     private Button mButtonEnde;
+    private Button mButtonReset;
     private CountDownTimer mCountDownTimer;
+    private CountDownTimer mCountDownPauseTimer;
     private boolean mTimerRunning;
+    private boolean mPauseTimerRunning;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
     private long mBreakTimeLeftInMillis = START_BREAK_TIME;
 
@@ -42,34 +45,70 @@ public class HomeFragment extends Fragment {
         mButtonStart = v.findViewById(R.id.startButton);
         mButtonPause = v.findViewById(R.id.pauseButton);
         mButtonEnde = v.findViewById(R.id.endeButton);
+        mButtonReset = v.findViewById(R.id.resetButton);
 
         mButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startWorkTimer();
-                mButtonStart.setEnabled(false);
-                mButtonStart.setTextColor(Color.GRAY);
-                mBreakTimeLeftInMillis = START_BREAK_TIME;
-            }
+//                if(!mTimerRunning) {//2
+                    startWorkTimer();  //2
+//                    mCountDownPauseTimer.start(); //2
+                    mButtonStart.setEnabled(false);
+                    mButtonStart.setTextColor(Color.GRAY);
+                    mButtonPause.setTextColor(Color.parseColor("#FF5722"));
+
+                mTimerRunning=true; //2
+//                mPauseTimerRunning=false;
+                if (mPauseTimerRunning)
+                mCountDownPauseTimer.cancel();
+                }
+
+//            }
         });
         mButtonPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mTimerRunning){
-                    pauseWorkTimer();
-                    startPauseTimer();
-                }else{
-                    startWorkTimer();
-                    pausePauseTimer();
-                }
+//                if (mTimerRunning) { //2
+//                    mCountDownTimer.cancel(); //2
+                mPauseTimerRunning=true;
+                    mTimerRunning=false; //2
+                    pauseWorkTimer(); //2
+                    startBreakTimer(); //2
+                    mButtonPause.setEnabled(false);
+                    mButtonPause.setTextColor(Color.GRAY);
+                    mButtonStart.setEnabled(true);
+                    mButtonStart.setTextColor(Color.parseColor("#06AF0C"));
+
+//                }else if(mTimerRunning=false){
+////                    //TEST>
+////                    mTimeLeftInMillis = START_TIME_IN_MILLIS;
+////                    mBreakTimeLeftInMillis = START_BREAK_TIME;
+////                    updateCountDownText();
+////                    //TEST END
+//                    startWorkTimer();
+////                    startBreakTimer();
+//                    mCountDownPauseTimer.cancel();
+//                }
             }
         });
+
         mButtonEnde.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 endWorkTimer();
+
                 mButtonStart.setEnabled(true);
                 mButtonStart.setTextColor(Color.parseColor("#06AF0C"));
+                mButtonPause.setEnabled(true);
+                mButtonPause.setTextColor(Color.parseColor("#FF5722"));
+            }
+        });
+
+        mButtonReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mButtonPause.setTextColor(Color.parseColor("#FF5722"));
+                resetAllTimes();
             }
         });
         return v;
@@ -81,6 +120,24 @@ public class HomeFragment extends Fragment {
             public void onTick(long millisUntilFinished) {
                 mTimeLeftInMillis = millisUntilFinished;
                 updateCountDownText();
+//                mCountDownPauseTimer.cancel();
+            }
+            @Override
+            public void onFinish() {
+                mTimerRunning = false;
+                mButtonStart.setEnabled(true);
+            }
+        }.start();
+        mTimerRunning= true;
+    }
+    private void startBreakTimer(){
+        //        //BreakTimer:
+        mCountDownPauseTimer = new CountDownTimer(mBreakTimeLeftInMillis, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                mBreakTimeLeftInMillis = millisUntilFinished;
+                updateCountDownTextPause();
+                mCountDownTimer.cancel();
             }
 
             @Override
@@ -88,44 +145,29 @@ public class HomeFragment extends Fragment {
                 mTimerRunning = false;
             }
         }.start();
-
-        mTimerRunning= true;
-//        mButtonStart.setText("pause");
-//        mButtonEnde.setVisibility(View.INVISIBLE);
-    }
-    private void startPauseTimer(){
-        //        //BreakTimer:
-        mCountDownTimer = new CountDownTimer(mBreakTimeLeftInMillis, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                mBreakTimeLeftInMillis = millisUntilFinished;
-                updateCountDownTextPause();
-
-            }
-
-            @Override
-            public void onFinish() {
-                mTimerRunning = false;
-            }
-        }.start(); //BreakTimer code END
+        mTimerRunning= true;//BreakTimer code END
     }
 
     private void pauseWorkTimer(){
         mCountDownTimer.cancel();
         mTimerRunning=false;
     }
-    private void pausePauseTimer(){
-        mCountDownTimer.cancel();
-        mTimerRunning=false;
-    }
     private void endWorkTimer(){
-        mTimeLeftInMillis = START_TIME_IN_MILLIS;
-        mCountDownTimer.cancel();
-        mBreakTimeLeftInMillis = START_BREAK_TIME;
-        updateCountDownText();
-    }
-    private void pauseTimer(){
 
+        mCountDownTimer.cancel();
+        mCountDownPauseTimer.cancel();
+    }
+    private void resetAllTimes(){
+        mTimeLeftInMillis = START_TIME_IN_MILLIS;
+        mBreakTimeLeftInMillis = START_BREAK_TIME;
+        updateCountDownTextPause();
+        updateCountDownText();
+        mCountDownTimer.cancel();
+        mCountDownPauseTimer.cancel();
+        mButtonStart.setTextColor(Color.parseColor("#06AF0C"));
+        mButtonPause.setTextColor(Color.parseColor("#FF5722"));
+        mButtonStart.setEnabled(true);
+        mButtonPause.setEnabled(true);
     }
 
     private void updateCountDownText() {
@@ -149,5 +191,7 @@ public class HomeFragment extends Fragment {
 
 
         }
+
+
 }
 

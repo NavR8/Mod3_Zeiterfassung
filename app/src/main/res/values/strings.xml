@@ -17,6 +17,7 @@
     <string name="contentDescription">TODO</string>
     <string name="startText">Start</string>
     <string name="endeText">Ende</string>
+    <string name="resetText">Reset Zeit</string>
     <string name="arbeitszeitText">Arbeitszeit</string>
     <string name="pauseText">Pause</string>
     <string name="verbleibendText">verbleibend</string>
