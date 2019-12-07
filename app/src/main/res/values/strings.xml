@@ -17,13 +17,16 @@
     <string name="contentDescription">TODO</string>
     <string name="startText">Start</string>
     <string name="endeText">Ende</string>
-    <string name="resetText">Reset Zeit</string>
+    <string name="resetText">Reset Zeiten</string>
     <string name="arbeitszeitText">Arbeitszeit</string>
     <string name="pauseText">Pause</string>
     <string name="verbleibendText">verbleibend</string>
     <string name="workZeit">08:00:00</string>
     <string name="breakZeit">01:00:00</string>
     <string name="companyName">modulo3 GmbH</string>
+
+    <string name="desc_textImage">Text</string>
+    <string name="desc_background">background</string>
 
 
 </resources>

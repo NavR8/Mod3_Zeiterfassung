@@ -47,6 +47,13 @@ public class HomeFragment extends Fragment {
         mButtonEnde = v.findViewById(R.id.endeButton);
         mButtonReset = v.findViewById(R.id.resetButton);
 
+        mButtonPause.setEnabled(false);
+        mButtonPause.setTextColor(Color.GRAY);
+        mButtonEnde.setEnabled(false);
+        mButtonEnde.setTextColor(Color.GRAY);
+        mButtonReset.setEnabled(false);
+        mButtonReset.setTextColor(Color.GRAY);
+
         mButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +62,8 @@ public class HomeFragment extends Fragment {
 //                    mCountDownPauseTimer.start(); //2
                     mButtonStart.setEnabled(false);
                     mButtonStart.setTextColor(Color.GRAY);
-                    mButtonPause.setTextColor(Color.parseColor("#FF5722"));
+                mButtonPause.setTextColor(Color.parseColor("#FF5722"));
+                mButtonPause.setEnabled(true);
 
                 mTimerRunning=true; //2
 //                mPauseTimerRunning=false;
@@ -78,6 +86,8 @@ public class HomeFragment extends Fragment {
                     mButtonPause.setTextColor(Color.GRAY);
                     mButtonStart.setEnabled(true);
                     mButtonStart.setTextColor(Color.parseColor("#06AF0C"));
+                mButtonEnde.setTextColor(Color.parseColor("#F8D60000"));
+                mButtonEnde.setEnabled(true);
 
 //                }else if(mTimerRunning=false){
 ////                    //TEST>
@@ -101,13 +111,14 @@ public class HomeFragment extends Fragment {
                 mButtonStart.setTextColor(Color.parseColor("#06AF0C"));
                 mButtonPause.setEnabled(true);
                 mButtonPause.setTextColor(Color.parseColor("#FF5722"));
+                mButtonReset.setEnabled(true);
+                mButtonReset.setTextColor(Color.parseColor("#FFFFFF"));
             }
         });
 
         mButtonReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mButtonPause.setTextColor(Color.parseColor("#FF5722"));
                 resetAllTimes();
             }
         });
@@ -158,16 +169,25 @@ public class HomeFragment extends Fragment {
         mCountDownPauseTimer.cancel();
     }
     private void resetAllTimes(){
-        mTimeLeftInMillis = START_TIME_IN_MILLIS;
+           mTimeLeftInMillis = START_TIME_IN_MILLIS;
         mBreakTimeLeftInMillis = START_BREAK_TIME;
         updateCountDownTextPause();
         updateCountDownText();
         mCountDownTimer.cancel();
         mCountDownPauseTimer.cancel();
         mButtonStart.setTextColor(Color.parseColor("#06AF0C"));
-        mButtonPause.setTextColor(Color.parseColor("#FF5722"));
-        mButtonStart.setEnabled(true);
-        mButtonPause.setEnabled(true);
+//        mButtonPause.setTextColor(Color.parseColor("#FF5722"));
+//        mButtonStart.setEnabled(true);
+//        mButtonPause.setEnabled(true);
+
+        //Zuruck zum AnfangsSituation der 3 Buttons:
+        mButtonPause.setEnabled(false);
+        mButtonPause.setTextColor(Color.GRAY);
+        mButtonEnde.setEnabled(false);
+        mButtonEnde.setTextColor(Color.GRAY);
+        mButtonReset.setEnabled(false);
+        mButtonReset.setTextColor(Color.GRAY);
+
     }
 
     private void updateCountDownText() {
