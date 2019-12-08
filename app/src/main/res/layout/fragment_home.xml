@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
      >
@@ -21,14 +22,15 @@
         android:id="@+id/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
         android:contentDescription="@string/desc_background"
+        android:scaleType="centerCrop"
         android:src="@drawable/app_main_wp_grey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.496" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/startButton"
@@ -102,9 +104,9 @@
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="25dp"
         android:contentDescription="@string/desc_textImage"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/background"
@@ -115,14 +117,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/agencyfb"
         android:text="@string/arbeitszeitText"
         android:textColor="#FAFFFFFF"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/personalNrTV" />
 
     <TextView
         android:id="@+id/textView2"
@@ -140,9 +142,10 @@
 
     <TextView
         android:id="@+id/arbeitsZeitVerbleibend"
-        android:layout_width="160sp"
+        android:layout_width="142dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
         android:fontFamily="@font/agencyfb"
         android:text="@string/workZeit"
@@ -150,12 +153,14 @@
         android:textSize="45sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/personalNrTV" />
 
     <TextView
         android:id="@+id/pauseZeitVerbleibend"
-        android:layout_width="160sp"
+        android:layout_width="132dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="105dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
         android:fontFamily="@font/agencyfb"
@@ -164,6 +169,7 @@
         android:textSize="45sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/arbeitsZeitVerbleibend" />
 
     <TextView
@@ -210,5 +216,18 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/background"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/personalNrTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="#FFEB3B"
+        android:text="@string/personal_nummer"
+        android:textColor="#05166F"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
