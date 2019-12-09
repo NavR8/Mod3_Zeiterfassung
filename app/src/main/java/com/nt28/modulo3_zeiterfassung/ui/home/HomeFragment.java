@@ -13,6 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.nt28.modulo3_zeiterfassung.R;
 
 import java.text.SimpleDateFormat;
@@ -69,6 +71,11 @@ public class HomeFragment extends Fragment {
 
         final TextView tvStartTime = v.findViewById(R.id.showStartedTime);
         final TextView tvEndTime = v.findViewById(R.id.showEndedTime);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance().getInstance();
+        DatabaseReference myRef = database.getReference("message");
+
+        myRef.setValue("Helleo World!");
 
         mArbeitStart.setOnClickListener(new View.OnClickListener() {
             @Override
