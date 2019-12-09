@@ -15,7 +15,9 @@
 <!--    <string name="menu_share">Share</string>-->
     <string name="menu_send">Send</string>
     <string name="contentDescription">TODO</string>
-    <string name="startText">Start</string>
+    <string name="startText">Fortsetzen</string>
+    <string name="startWorkText">Arbeitsbeginn</string>
+
     <string name="endeText">Ende</string>
     <string name="resetText">Reset Zeiten</string>
     <string name="arbeitszeitText">Arbeitszeit</string>
@@ -28,6 +30,10 @@
     <string name="desc_textImage">Text</string>
     <string name="desc_background">background</string>
     <string name="personal_nummer">Personal Nummer</string>
+    <string name="angefangene_zeit">Angefangene Zeit:</string>
+    <string name="showstartedtime">showStartedTime</string>
+    <string name="beendete_zeit">Beendete Zeit:</string>
+    <string name="showendedtime">showEndedTime</string>
 
 
 </resources>

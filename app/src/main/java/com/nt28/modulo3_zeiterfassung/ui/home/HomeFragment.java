@@ -14,6 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.nt28.modulo3_zeiterfassung.R;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
@@ -28,12 +31,18 @@ public class HomeFragment extends Fragment {
     private Button mButtonPause;
     private Button mButtonEnde;
     private Button mButtonReset;
+    private Button mArbeitStart;
     private CountDownTimer mCountDownTimer;
     private CountDownTimer mCountDownPauseTimer;
     private boolean mTimerRunning;
     private boolean mPauseTimerRunning;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
     private long mBreakTimeLeftInMillis = START_BREAK_TIME;
+
+    private TextView mTVstartetTime;
+    private TextView mTVendedTime;
+    private TextView mTVshowStartetTime;
+    private TextView mTVshowEndedTime;
 
 
     @Nullable
@@ -46,38 +55,75 @@ public class HomeFragment extends Fragment {
         mButtonPause = v.findViewById(R.id.pauseButton);
         mButtonEnde = v.findViewById(R.id.endeButton);
         mButtonReset = v.findViewById(R.id.resetButton);
+        mArbeitStart = v.findViewById(R.id.startWorkBtn);
 
-        mButtonPause.setEnabled(false);
-        mButtonPause.setTextColor(Color.GRAY);
-        mButtonEnde.setEnabled(false);
-        mButtonEnde.setTextColor(Color.GRAY);
-        mButtonReset.setEnabled(false);
-        mButtonReset.setTextColor(Color.GRAY);
+        mTVstartetTime = v.findViewById(R.id.startedTime);
+        mTVendedTime = v.findViewById(R.id.endedTime);
+        mTVshowStartetTime =v.findViewById(R.id.showStartedTime);
+        mTVshowEndedTime = v.findViewById(R.id.showEndedTime);
+
+        mButtonStart.setVisibility(View.INVISIBLE);
+        mButtonPause.setVisibility(View.INVISIBLE);
+        mButtonEnde.setVisibility(View.INVISIBLE);
+        mButtonReset.setVisibility(View.INVISIBLE);
+
+        final TextView tvStartTime = v.findViewById(R.id.showStartedTime);
+        final TextView tvEndTime = v.findViewById(R.id.showEndedTime);
+
+        mArbeitStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startWorkTimer();
+                mArbeitStart.setVisibility(View.INVISIBLE);
+
+                //saveWorkTime();
+                SimpleDateFormat format  = new SimpleDateFormat("EEEE dd.MMM.yyyy, hh:mm:ss a");
+                Calendar calendar = Calendar.getInstance(); // OK, bei anderem video gleich// This from Coding in Flow.
+                String dateTime = format.format(calendar.getTime());
+                tvStartTime.setText(dateTime);
+
+                mButtonStart.setVisibility(View.VISIBLE);
+                mButtonPause.setVisibility(View.VISIBLE);
+                mButtonEnde.setVisibility(View.VISIBLE);
+                mButtonReset.setVisibility(View.VISIBLE);
+
+                mButtonStart.setEnabled(false);
+                mButtonStart.setTextColor(Color.GRAY);
+                mButtonEnde.setEnabled(false);
+                mButtonEnde.setTextColor(Color.GRAY);
+                mButtonReset.setEnabled(false);
+                mButtonReset.setTextColor(Color.GRAY);
+
+                mTVstartetTime.setVisibility(View.VISIBLE);
+                mTVshowStartetTime.setVisibility(View.VISIBLE);
+                mTVshowEndedTime.setVisibility(View.INVISIBLE);
+                mTVendedTime.setVisibility(View.INVISIBLE);
+
+
+            }
+        });
 
         mButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if(!mTimerRunning) {//2
-                    startWorkTimer();  //2
-//                    mCountDownPauseTimer.start(); //2
+                    startWorkTimer();
                     mButtonStart.setEnabled(false);
                     mButtonStart.setTextColor(Color.GRAY);
                 mButtonPause.setTextColor(Color.parseColor("#FF5722"));
                 mButtonPause.setEnabled(true);
 
-                mTimerRunning=true; //2
-//                mPauseTimerRunning=false;
+                mTimerRunning=true;
+
+
+
                 if (mPauseTimerRunning)
                 mCountDownPauseTimer.cancel();
                 }
-
-//            }
         });
         mButtonPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (mTimerRunning) { //2
-//                    mCountDownTimer.cancel(); //2
+
                 mPauseTimerRunning=true;
                     mTimerRunning=false; //2
                     pauseWorkTimer(); //2
@@ -89,16 +135,6 @@ public class HomeFragment extends Fragment {
                 mButtonEnde.setTextColor(Color.parseColor("#F8D60000"));
                 mButtonEnde.setEnabled(true);
 
-//                }else if(mTimerRunning=false){
-////                    //TEST>
-////                    mTimeLeftInMillis = START_TIME_IN_MILLIS;
-////                    mBreakTimeLeftInMillis = START_BREAK_TIME;
-////                    updateCountDownText();
-////                    //TEST END
-//                    startWorkTimer();
-////                    startBreakTimer();
-//                    mCountDownPauseTimer.cancel();
-//                }
             }
         });
 
@@ -113,6 +149,14 @@ public class HomeFragment extends Fragment {
                 mButtonPause.setTextColor(Color.parseColor("#FF5722"));
                 mButtonReset.setEnabled(true);
                 mButtonReset.setTextColor(Color.parseColor("#FFFFFF"));
+
+                SimpleDateFormat format  = new SimpleDateFormat("EEEE dd.MMM.yyyy, hh:mm:ss a");
+                Calendar calendar = Calendar.getInstance(); // OK, bei anderem video gleich// This from Coding in Flow.
+                String dateTime = format.format(calendar.getTime());
+                tvEndTime.setText(dateTime);
+
+                mTVendedTime.setVisibility(View.VISIBLE);
+                mTVshowEndedTime.setVisibility(View.VISIBLE);
             }
         });
 
@@ -120,9 +164,18 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 resetAllTimes();
+                mArbeitStart.setVisibility(View.VISIBLE);
+
+                mButtonStart.setVisibility(View.INVISIBLE);
+                mButtonPause.setVisibility(View.INVISIBLE);
+                mButtonEnde.setVisibility(View.INVISIBLE);
+                mButtonReset.setVisibility(View.INVISIBLE);
+
             }
         });
         return v;
+
+
     }
         //WorkTimer
         private void startWorkTimer(){
@@ -132,6 +185,8 @@ public class HomeFragment extends Fragment {
                 mTimeLeftInMillis = millisUntilFinished;
                 updateCountDownText();
 //                mCountDownPauseTimer.cancel();
+
+
             }
             @Override
             public void onFinish() {
@@ -176,17 +231,14 @@ public class HomeFragment extends Fragment {
         mCountDownTimer.cancel();
         mCountDownPauseTimer.cancel();
         mButtonStart.setTextColor(Color.parseColor("#06AF0C"));
-//        mButtonPause.setTextColor(Color.parseColor("#FF5722"));
-//        mButtonStart.setEnabled(true);
-//        mButtonPause.setEnabled(true);
 
         //Zuruck zum AnfangsSituation der 3 Buttons:
-        mButtonPause.setEnabled(false);
-        mButtonPause.setTextColor(Color.GRAY);
-        mButtonEnde.setEnabled(false);
-        mButtonEnde.setTextColor(Color.GRAY);
-        mButtonReset.setEnabled(false);
-        mButtonReset.setTextColor(Color.GRAY);
+//        mButtonPause.setEnabled(false);
+//        mButtonPause.setTextColor(Color.GRAY);
+//        mButtonEnde.setEnabled(false);
+//        mButtonEnde.setTextColor(Color.GRAY);
+//        mButtonReset.setEnabled(false);
+//        mButtonReset.setTextColor(Color.GRAY);
 
     }
 
@@ -211,7 +263,6 @@ public class HomeFragment extends Fragment {
 
 
         }
-
 
 }
 
