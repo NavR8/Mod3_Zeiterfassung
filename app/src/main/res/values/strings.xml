@@ -34,6 +34,29 @@
     <string name="showstartedtime">showStartedTime</string>
     <string name="beendete_zeit">Beendete Zeit:</string>
     <string name="showendedtime">showEndedTime</string>
+    <string name="veranstaltungen_termine">Veranstaltungen und Termine</string>
+    <string name="betriebsfeier">Betriebsfeier:</string>
+    <string name="event">Event:</string>
+    <string name="buhrzeit1">Uhrzeit</string>
+    <string name="buhrzeit2">Uhrzeit</string>
+    <string name="edatum1">Datum</string>
+    <string name="bdatum1">Datum</string>
+    <string name="bort2">Ort</string>
+    <string name="bdatum2">Datum</string>
+    <string name="bort1">Ort</string>
+    <string name="euhrzeit1">Uhrzeit</string>
+    <string name="eort1">Ort</string>
+    <string name="euhrzeit2">Uhrzeit</string>
+    <string name="eort2">Ort</string>
+    <string name="edatum2">Datum</string>
+    <string name="passwort">Passwort</string>
+    <string name="personal_nr">Personal-Nr</string>
+    <string name="login">Login</string>
+    <string name="pers_nummer">Personal-Nummer</string>
+    <string name="login_label">Login</string>
+    <string name="anmelden">Anmelden</string>
+    <string name="error_login">Please fill any empty fields</string>
+    <string name="login_ok">Login successfull</string>
 
 
 </resources>

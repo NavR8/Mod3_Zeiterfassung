@@ -30,4 +30,13 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_info" />
 
+    <Button
+        android:id="@+id/showDialogBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/anmelden"
+        android:layout_gravity="center_vertical|center_horizontal"
+
+        />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
