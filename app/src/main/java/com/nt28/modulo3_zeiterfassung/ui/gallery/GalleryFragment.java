@@ -26,7 +26,7 @@ public class GalleryFragment extends Fragment {
 
 
      private DatabaseReference refFDB;
-
+ //
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
